@@ -1,14 +1,14 @@
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.Socket;
 
 public class Client {
     public static void main(String[] args) {
-        try (Socket clientSocket = new Socket("127.0.0.1", 8787); // ждем подключения
-             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+        try (Socket clientSocket = new Socket(InetAddress.getLocalHost(), 8787); // ждем подключения
         ) {
-            out.println("One string");
+            System.out.println("One string");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
     }
 }
